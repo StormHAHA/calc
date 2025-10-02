@@ -147,60 +147,77 @@ export default function CalculatorApp() {
   };
 
   return (
-    <div className="calculator p-4 max-w-[1280px] flex flex-col gap-4 mx-auto">
-      <Breadcrumbs
-        steps={steps}
-        currentStep={currentStep}
-        setCurrentStep={setCurrentStep}
-      />
-      <Step
-  step={steps[currentStep]}
-  productType={productType}
-  setProductType={setProductType}
-  shape={shape}
-  setShape={setShape}
-  selectedMaterial={selectedMaterial}
-  setSelectedMaterial={setSelectedMaterial}
-  selectedProfile={selectedProfile}
-  setSelectedProfile={setSelectedProfile}
-  selectedBord={selectedBord}
-  setSelectedBord={setSelectedBord}
-  selectedWashings={selectedWashings}
-  setSelectedWashings={setSelectedWashings}
-  dimensions={dimensions}
-  setDimensions={setDimensions}
-  rounding={rounding}
-  setRounding={setRounding}
-  cutoutHob={cutoutHob}
-  setCutoutHob={setCutoutHob}
-  cutoutWashing={cutoutWashing}
-  setCutoutWashing={setCutoutWashing}
-  sinkStone={sinkStone}
-  setSinkStone={setSinkStone}    
-  profiles={profiles}
-  bord={bord}
-  washings={washings}
-  materials={materials}  
-  calculateTotal={calculateTotal}
-/>
-      <PriceDisplay total={calculateTotal()} />
-      <div className="mt-4 flex justify-between">
-        {currentStep > 0 && (
-          <button
-            onClick={() => setCurrentStep(currentStep - 1)}
-            className="btn"
-          >
-            Назад
-          </button>
-        )}
-        {currentStep < steps.length - 1 && (
-          <button
-            onClick={() => setCurrentStep(currentStep + 1)}
-            className="btn"
-          >
-            Далее
-          </button>
-        )}
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-4">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold text-white mb-2">Конфигуратор столешниц</h1>
+          <p className="text-gray-400">Создайте идеальную столешницу для вашего дома</p>
+        </div>
+        
+        <div className="space-y-6">
+          <Breadcrumbs
+            steps={steps}
+            currentStep={currentStep}
+            setCurrentStep={setCurrentStep}
+          />
+          
+          <Step
+            step={steps[currentStep]}
+            productType={productType}
+            setProductType={setProductType}
+            shape={shape}
+            setShape={setShape}
+            selectedMaterial={selectedMaterial}
+            setSelectedMaterial={setSelectedMaterial}
+            selectedProfile={selectedProfile}
+            setSelectedProfile={setSelectedProfile}
+            selectedBord={selectedBord}
+            setSelectedBord={setSelectedBord}
+            selectedWashings={selectedWashings}
+            setSelectedWashings={setSelectedWashings}
+            dimensions={dimensions}
+            setDimensions={setDimensions}
+            rounding={rounding}
+            setRounding={setRounding}
+            cutoutHob={cutoutHob}
+            setCutoutHob={setCutoutHob}
+            cutoutWashing={cutoutWashing}
+            setCutoutWashing={setCutoutWashing}
+            sinkStone={sinkStone}
+            setSinkStone={setSinkStone}    
+            profiles={profiles}
+            bord={bord}
+            washings={washings}
+            materials={materials}  
+            calculateTotal={calculateTotal}
+          />
+          
+          <PriceDisplay total={calculateTotal()} />
+          
+          <div className="flex justify-between items-center bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 shadow-2xl">
+            {currentStep > 0 ? (
+              <button
+                onClick={() => setCurrentStep(currentStep - 1)}
+                className="group bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center gap-2"
+              >
+                <span>←</span>
+                <span>Назад</span>
+              </button>
+            ) : (
+              <div></div>
+            )}
+            
+            {currentStep < steps.length - 1 && (
+              <button
+                onClick={() => setCurrentStep(currentStep + 1)}
+                className="group bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/30 flex items-center gap-2"
+              >
+                <span>Далее</span>
+                <span>→</span>
+              </button>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
