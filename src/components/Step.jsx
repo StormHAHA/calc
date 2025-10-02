@@ -245,8 +245,8 @@ if (step.type === "dimensions") {
   const washingImages = {
     M410: "/img/washing0.jpg",
     MR410: "/img/washing1.jpg",
-    D380: "/img//img/washing2.jpg",
-    M250: "/img//img/washing5.jpg",
+    D380: "/img/washing2.jpg",
+    M250: "/img/washing5.jpg",
     L600: "/img/washing3.jpg",
     SH500: "/img/washing4.jpg",
     R530: "/img/washing6.jpg",
@@ -430,46 +430,46 @@ if (step.type === "summary") {
         <h2 className="text-text-accent font-bold text-2xl text-center">Расчет стоимости изделия</h2>
         
         <div className="mt-4 grid grid-cols-2 gap-4">
-          <p>Форма:</p>
-          <p>{props.shape}</p>
+          <p className="text-text-headers">Форма:</p>
+          <p className="text-text-headers">{props.shape}</p>
 
-          <p>Площадь изделия:</p>
-          <p>{S.toFixed(2)} м²</p>
+          <p className="text-text-headers">Площадь изделия:</p>
+          <p className="text-text-headers">{S.toFixed(2)} м²</p>
 
-          <p>Производитель:</p>
-          <p>{props.selectedMaterial.type}</p>
+          <p className="text-text-headers">Производитель:</p>
+          <p className="text-text-headers">{props.selectedMaterial.type}</p>
 
-          <p>Наименование материала:</p>
-          <p>{props.materials[props.selectedMaterial.type][props.selectedMaterial.index]} мм</p>
+          <p className="text-text-headers">Наименование материала:</p>
+          <p className="text-text-headers">{props.materials[props.selectedMaterial.type][props.selectedMaterial.index]} мм</p>
 
-          <p>Стоимость материала:</p>
-          <p>{(pricePerM2 * S).toLocaleString()} руб.</p>
+          <p className="text-text-headers">Стоимость материала:</p>
+          <p className="text-text-headers">{(pricePerM2 * S).toLocaleString()} руб.</p>
 
-          <p>Вид передней кромки:</p>
-          <p>{["R3", "R5", "R10", "L45", "Классика", "Непроливайка"][props.selectedProfile]}</p>
+          <p className="text-text-headers">Вид передней кромки:</p>
+          <p className="text-text-headers">{["R3", "R5", "R10", "L45", "Классика", "Непроливайка"][props.selectedProfile]}</p>
 
           {props.productType !== "Подоконники" && (
             <>
-              <p>Стоимость бортика:</p>
-              <p>{(S * props.bord[props.selectedBord]).toLocaleString()} руб.</p>
+              <p className="text-text-headers">Стоимость бортика:</p>
+              <p className="text-text-headers">{(S * props.bord[props.selectedBord]).toLocaleString()} руб.</p>
 
-              <p>Радиусы бортиков:</p>
-              <p>{props.rounding.map(r => r || 0).join(", ")}</p>
+              <p className="text-text-headers">Радиусы бортиков:</p>
+              <p className="text-text-headers">{props.rounding.map(r => r || 0).join(", ")}</p>
 
-              <p>Вырез под мойку:</p>
-              <p>{props.cutoutWashing ? "Да" : "Нет"}</p>
+              <p className="text-text-headers">Вырез под мойку:</p>
+              <p className="text-text-headers">{props.cutoutWashing ? "Да" : "Нет"}</p>
 
               {props.cutoutWashing && props.sinkStone && (
                 <>
-                  <p>Выбранная мойка:</p>
-                  <p>{props.selectedWashings.map(i => props.washings[i][0]).join(", ")}</p>
+                  <p className="text-text-headers">Выбранная мойка:</p>
+                  <p className="text-text-headers">{props.selectedWashings.map(i => props.washings[i][0]).join(", ")}</p>
                 </>
               )}
             </>
           )}
 
-          <p className="font-bold mt-4">Итоговая стоимость:</p>
-          <p className="font-bold">{totalPrice.toLocaleString()} руб.</p>
+          <p className="font-bold mt-4 text-text-headers">Итоговая стоимость:</p>
+          <p className="font-bold text-text-headers">{totalPrice.toLocaleString()} руб.</p>
         </div>
       </div>
     </section>

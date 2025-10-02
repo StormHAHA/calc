@@ -1,6 +1,6 @@
 export default function Breadcrumbs({ steps, currentStep, setCurrentStep }) {
   return (
-    <div className="breadcrumbs flex space-x-2 mb-4">
+    <div className="breadcrumbs flex space-x-2 mb-4 text-text-headers">
       {steps.map((step, idx) => (
         <span
           key={step.id}
