@@ -1,6 +1,26 @@
+import React from "react";
+import { useRef } from "react";
+
 export default function Step(props) {
   const { step } = props;
-
+  const printRef = useRef();
+  const handlePrint = () => {
+   const printContents = printRef.current.innerHTML;
+    const newWindow = window.open("", "", "width=800,height=600");
+    newWindow.document.write(`
+      <html>
+        <head>
+          <title>Расчет стоимости изделия</title>
+          <style>
+            body { font-family: sans-serif; padding: 20px; background: #fff; color: #000; }
+          </style>
+        </head>
+        <body>${printContents}</body>
+      </html>
+    `);
+    newWindow.document.close();
+    newWindow.print();
+  };
   if (step.type === "type") {
     const types = ["Столешницы для кухни", "Столешницы для ванной", "Подоконники"];
     const descr = ["Кухонные и рабочие столешницы", "Интегрированные мойки", "Подоконники из искусственного камня"];
@@ -515,7 +535,8 @@ export default function Step(props) {
     const totalPrice = props.calculateTotal?.() || 0;
 
     return (
-      <section className="w-full">
+      <div>
+      <section className="w-full" ref={printRef}>
         <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 shadow-2xl">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-white mb-2">Расчет стоимости изделия</h2>
@@ -529,19 +550,19 @@ export default function Step(props) {
                 <h3 className="text-lg font-semibold text-white mb-3">Основные параметры</h3>
                 <div className="space-y-2">
                   <div className="flex justify-between">
-                    <span className="text-gray-300">Форма:</span>
+                    <span className="text-gray-300">Форма: </span>
                     <span className="text-white font-medium">{props.shape}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-300">Площадь изделия:</span>
+                    <span className="text-gray-300">Площадь изделия: </span>
                     <span className="text-white font-medium">{S.toFixed(2)} м²</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-300">Производитель:</span>
+                    <span className="text-gray-300">Производитель: </span>
                     <span className="text-white font-medium">{props.selectedMaterial?.type}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-300">Толщина материала:</span>
+                    <span className="text-gray-300">Толщина материала: </span>
                     <span className="text-white font-medium">{props.materials?.[props.selectedMaterial?.type]?.[props.selectedMaterial?.index]} мм</span>
                   </div>
                 </div>
@@ -551,25 +572,25 @@ export default function Step(props) {
                 <h3 className="text-lg font-semibold text-white mb-3">Дополнительные опции</h3>
                 <div className="space-y-2">
                   <div className="flex justify-between">
-                    <span className="text-gray-300">Вид передней кромки:</span>
+                    <span className="text-gray-300">Вид передней кромки: </span>
                     <span className="text-white font-medium">{["R3", "R5", "R10", "L45", "Классика", "Непроливайка"][props.selectedProfile || 0]}</span>
                   </div>
                   
                   {props.productType !== "Подоконники" && (
                     <>
                       <div className="flex justify-between">
-                        <span className="text-gray-300">Радиусы бортиков:</span>
+                        <span className="text-gray-300">Радиусы бортиков: </span>
                         <span className="text-white font-medium">{props.rounding?.map(r => r || 0).join(", ")}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-300">Вырез под мойку:</span>
+                        <span className="text-gray-300">Вырез под мойку: </span>
                         <span className={`font-medium ${props.cutoutWashing ? 'text-green-400' : 'text-red-400'}`}>
                           {props.cutoutWashing ? "Да" : "Нет"}
                         </span>
                       </div>
                       {props.cutoutWashing && props.sinkStone && (
                         <div className="flex justify-between">
-                          <span className="text-gray-300">Выбранная мойка:</span>
+                          <span className="text-gray-300">Выбранная мойка: </span>
                           <span className="text-white font-medium">{props.selectedWashings?.map(i => props.washings?.[i]?.[0]).join(", ")}</span>
                         </div>
                       )}
@@ -585,20 +606,20 @@ export default function Step(props) {
                 <h3 className="text-lg font-semibold text-white mb-3">Стоимость</h3>
                 <div className="space-y-3">
                   <div className="flex justify-between">
-                    <span className="text-gray-300">Стоимость материала:</span>
+                    <span className="text-gray-300">Стоимость материала: </span>
                     <span className="text-white font-medium">{(pricePerM2 * S).toLocaleString()} руб.</span>
                   </div>
                   
                   {props.productType !== "Подоконники" && (
                     <div className="flex justify-between">
-                      <span className="text-gray-300">Стоимость бортика:</span>
+                      <span className="text-gray-300">Стоимость бортика: </span>
                       <span className="text-white font-medium">{(S * (props.bord?.[props.selectedBord || 0] || 0)).toLocaleString()} руб.</span>
                     </div>
                   )}
                   
                   <div className="border-t border-gray-600 pt-3">
                     <div className="flex justify-between items-center">
-                      <span className="text-xl font-bold text-white">Итоговая стоимость:</span>
+                      <span className="text-xl font-bold text-white">Итоговая стоимость: </span>
                       <span className="text-2xl font-bold text-green-400">{totalPrice.toLocaleString()} руб.</span>
                     </div>
                   </div>
@@ -618,6 +639,13 @@ export default function Step(props) {
           </div>
         </div>
       </section>
+      <button
+        onClick={handlePrint}
+        className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg"
+      >
+        Печать / PDF
+      </button>
+      </div>
     );
   }
 

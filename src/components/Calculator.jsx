@@ -61,7 +61,7 @@ export default function CalculatorApp() {
     const isBathroom = productType === "Столешницы для ванной";
     const isWindowsill = productType === "Подоконники";
 
-    const dollar = 105;
+    const dollar = 110;
     const radius = 1500;
     const cutout = 345;
 
