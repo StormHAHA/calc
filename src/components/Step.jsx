@@ -21,6 +21,19 @@ export default function Step(props) {
     newWindow.document.close();
     newWindow.print();
   };
+  // Хелпер для плейсхолдера
+  const getPlaceholder = (field) => {
+    const match = field.match(/([WH])(\d+)/); 
+    if (!match) return field; 
+
+    const [, type, num] = match; 
+
+    if (num === "1") {
+      return type === "W" ? "Ширина" : "Глубина";
+    } else {
+      return type === "W" ? `Ширина ${num - 1}` : `Глубина ${num - 1}`;
+    }
+  };
   if (step.type === "type") {
     const types = ["Столешницы для кухни", "Столешницы для ванной", "Подоконники"];
     const descr = ["Кухонные и рабочие столешницы", "Интегрированные мойки", "Подоконники из искусственного камня"];
@@ -101,11 +114,11 @@ export default function Step(props) {
                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 
                 <div className="relative z-10">
-                  <div className="w-full h-32 mb-4 rounded-lg overflow-hidden bg-gray-600/30">
+                  <div className="w-full h-38 mb-4 rounded-lg overflow-hidden bg-gray-600/30">
                     <img 
                       src={imgs[i]} 
                       alt={shape}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                      className="w-full h-full  object-cover transition-transform duration-300 group-hover:scale-110"
                     />
                   </div>
                   <h3 className="text-lg font-semibold text-white">{shape}</h3>
@@ -230,7 +243,7 @@ export default function Step(props) {
                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 
                 <div className="relative z-10">
-                  <div className="w-full h-24 mb-3 rounded-lg overflow-hidden bg-gray-600/30">
+                  <div className="w-full h-34 mb-3 rounded-lg overflow-hidden bg-gray-600/30">
                     <img
                       src={imgs[i]}
                       alt={name}
@@ -297,27 +310,27 @@ export default function Step(props) {
     if (props.productType === "Столешницы для кухни") {
       if (props.shape === "Прямая") {
         dimensionFields = ["W1", "H1"];
-        shapeImage = "/img/001b.jpg";
+        shapeImage = "/img/001b.png";
       } else if (props.shape === "Г-образная") {
         dimensionFields = ["W1", "H1", "W2", "H2"];
-        shapeImage = "/img/002b.jpg";
+        shapeImage = "/img/002b.png";
       } else if (props.shape === "П-образная") {
         dimensionFields = ["W1", "H1", "W2", "H2", "W3", "H3"];
-        shapeImage = "/img/003b.jpg";
+        shapeImage = "/img/003b.png";
       }
     } else if (props.productType === "Столешницы для ванной") {
       dimensionFields = ["W1", "H1"];
-      shapeImage = "/img/014b.jpg";
+      shapeImage = "/img/014b.png";
     } else if (props.productType === "Подоконники") {
       if (props.shape === "Прямой") {
         dimensionFields = ["W1", "H1"];
-        shapeImage = "/img/005b.jpg";
+        shapeImage = "/img/005b.png";
       } else if (props.shape === "Угловой") {
         dimensionFields = ["W1", "H1", "W2", "H2"];
-        shapeImage = "/img/006b.jpg";
+        shapeImage = "/img/006b.png";
       } else if (props.shape === "Эркерный") {
         dimensionFields = ["W1", "H1", "W2", "H2", "W3", "H3"];
-        shapeImage = "/img/004b.jpg";
+        shapeImage = "/img/004b.png";
       }
     }
 
@@ -359,7 +372,7 @@ export default function Step(props) {
               <div className="grid grid-cols-2 gap-4">
                 {dimensionFields.map((field) => (
                   <div key={field} className="space-y-2">
-                    <label className="block text-gray-300 font-medium">{field}</label>
+                    <label className="block text-gray-300 font-medium">{getPlaceholder(field)}</label>
                     <input
                       type="number"
                       value={props.dimensions?.[field] || ""}
@@ -370,7 +383,7 @@ export default function Step(props) {
                         })
                       }
                       className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
-                      placeholder="0"
+                      placeholder={"Значение в мм"}
                       step="1"
                       min="0"
                     />
@@ -488,7 +501,7 @@ export default function Step(props) {
                         
                         <div className="relative z-10">
                           {washingImages[sink] && (
-                            <div className="w-full h-24 mb-3 rounded-lg overflow-hidden bg-gray-600/30">
+                            <div className="w-full h-34 mb-3 rounded-lg overflow-hidden bg-gray-600/30">
                               <img
                                 src={washingImages[sink]}
                                 alt={sink}
