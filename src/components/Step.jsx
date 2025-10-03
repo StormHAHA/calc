@@ -142,12 +142,12 @@ export default function Step(props) {
       "Neomarm": "Neomarm"
     };
     const imgs = [
-      "/img/Lg-Hi-Macs.png",
-      "/img/Samsung-Staron.png",
-      "/img/Corian.png",
+      "/img/HiMacs.png",
+      "/img/Staron.png",
+      "/img/Dupont.png",
       "/img/Hanex.png",
       "/img/Grandex.png",
-      "/img/Neomarm.jpg",
+      "/img/Neomarm.png",
     ];
 
     const selectedSeries = props.selectedMaterial ? props.materials?.[props.selectedMaterial.type] : [];
@@ -463,8 +463,17 @@ export default function Step(props) {
                         props.setSelectedWashings?.([]);
                       }
                     }}
-                    className="w-5 h-5 text-blue-500 bg-gray-700 border-gray-600 rounded focus:ring-blue-500 focus:ring-2"
-                  />
+                     className="
+                        w-5 h-5
+                        form-checkbox
+                        text-blue-500
+                        bg-gray-700
+                        border-gray-600
+                        rounded
+                        focus:ring-blue-500 focus:ring-2
+                        cursor-pointer
+                      "
+                    />
                   <span className="text-white group-hover:text-blue-300 transition-colors duration-300">Вырез под мойку</span>
                 </label>
 
@@ -479,7 +488,16 @@ export default function Step(props) {
                           props.setSelectedWashings?.([]);
                         }
                       }}
-                      className="w-5 h-5 text-blue-500 bg-gray-700 border-gray-600 rounded focus:ring-blue-500 focus:ring-2"
+                      className="
+                        w-5 h-5
+                        form-checkbox
+                        text-blue-500
+                        bg-gray-700
+                        border-gray-600
+                        rounded
+                        focus:ring-blue-500 focus:ring-2
+                        cursor-pointer
+                      "
                     />
                     <span className="text-white group-hover:text-blue-300 transition-colors duration-300">Мойка из камня</span>
                   </label>

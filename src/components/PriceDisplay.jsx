@@ -23,28 +23,6 @@ export default function PriceDisplay({ total }) {
           )}
         </div>
       </div>
-      
-      {total === 0 ? (
-        <div className="mt-6 text-center">
-          <div className="bg-gradient-to-r from-yellow-600/20 to-orange-600/20 border border-yellow-500/30 rounded-xl p-4">
-            <p className="text-yellow-300 text-sm">
-              Выберите параметры для расчета стоимости
-            </p>
-          </div>
-        </div>
-      ) : (
-        <div className="mt-6">
-          <div className="bg-gradient-to-r from-blue-600/20 to-blue-700/20 border border-blue-500/30 rounded-xl p-4">
-            <div className="flex items-center justify-between">
-              <span className="text-blue-300 text-sm">Готовность к заказу</span>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                <span className="text-green-400 text-sm font-medium">Готово</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
