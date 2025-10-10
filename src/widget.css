@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,7 +11,9 @@
   --btn-color: #007b00;
   --border: 12px;
 }
-
+body {
+  background-color: var(--bg);
+}
 .container {
   max-width: 1280px;
   margin: 0 auto;

@@ -34,6 +34,13 @@ export default function Step(props) {
       return type === "W" ? `Ширина ${num - 1}` : `Глубина ${num - 1}`;
     }
   };
+  const baseCard = "bg-gradient-to-br from-[#3B6036]/80 to-[#62C584]/20 backdrop-blur-sm border border-[#3B6036]/40 rounded-2xl p-8 shadow-2xl shadow-[#3B6036]/20";
+
+  // Активная кнопка (зелёная)
+  const activeBtn = "bg-gradient-to-br from-[#3B6036]/50 to-[#62C584]/50 border-[#62C584] shadow-lg shadow-[#3B6036]/40";
+
+  // Пассивная кнопка
+  const inactiveBtn = "bg-gradient-to-br from-gray-700/50 to-gray-800/50 border-gray-600/50 hover:border-[#62C584]/40";
   if (step.type === "type") {
     const types = ["Столешницы для кухни", "Столешницы для ванной", "Подоконники"];
     const descr = ["Кухонные и рабочие столешницы", "Интегрированные мойки", "Подоконники из искусственного камня"];
@@ -41,7 +48,7 @@ export default function Step(props) {
 
     return (
       <section className="w-full">
-        <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 shadow-2xl">
+        <div className={baseCard}>
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-white mb-2">Тип продукта</h2>
             <p className="text-gray-400">Выберите тип продукта для начала конфигурации</p>
@@ -54,7 +61,7 @@ export default function Step(props) {
                 onClick={() => props.setProductType?.(type)}
                 className={`group relative overflow-hidden rounded-xl border-2 p-8 transition-all duration-300 hover:scale-105 hover:shadow-2xl
                   ${props.productType === type 
-                    ? "bg-gradient-to-br from-blue-500/30 to-blue-600/30 border-blue-400 shadow-blue-500/20" 
+                    ? "bg-gradient-to-br from-emerald-500/30 to-emerald-600/30 border-emerald-400 shadow-emerald-500/20" 
                     : "bg-gradient-to-br from-gray-700/50 to-gray-800/50 border-gray-600/50 hover:border-gray-500"
                   }`}
               >
@@ -94,7 +101,7 @@ export default function Step(props) {
 
     return (
       <section className="w-full">
-        <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 shadow-2xl">
+        <div className={baseCard}>
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-white mb-2">Форма изделия</h2>
             <p className="text-gray-400">{h}</p>
@@ -107,7 +114,7 @@ export default function Step(props) {
                 onClick={() => props.setShape?.(shape)}
                 className={`group relative overflow-hidden rounded-xl border-2 p-6 transition-all duration-300 hover:scale-105 hover:shadow-2xl
                   ${props.shape === shape 
-                    ? "bg-gradient-to-br from-blue-500/30 to-blue-600/30 border-blue-400 shadow-blue-500/20" 
+                    ? "bg-gradient-to-br from-emerald-500/30 to-emerald-600/30 border-emerald-400 shadow-emerald-500/20" 
                     : "bg-gradient-to-br from-gray-700/50 to-gray-800/50 border-gray-600/50 hover:border-gray-500"
                   }`}
               >
@@ -154,7 +161,7 @@ export default function Step(props) {
 
     return (
       <section className="w-full">
-        <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 shadow-2xl">
+        <div className={baseCard}>
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-white mb-2">Материал</h2>
             <p className="text-gray-400">Выберите материал для вашего изделия</p>
@@ -169,7 +176,7 @@ export default function Step(props) {
                   onClick={() => props.setSelectedMaterial?.({ type: key, index: 0 })}
                   className={`group relative overflow-hidden rounded-xl border-2 p-4 transition-all duration-300 hover:scale-105 hover:shadow-2xl
                     ${props.selectedMaterial?.type === key 
-                      ? "bg-gradient-to-br from-blue-500/30 to-blue-600/30 border-blue-400 shadow-blue-500/20" 
+                      ? "bg-gradient-to-br from-emerald-500/30 to-emerald-600/30 border-emerald-400 shadow-emerald-500/20" 
                       : "bg-gradient-to-br from-gray-700/50 to-gray-800/50 border-gray-600/50 hover:border-gray-500"
                     }`}
                 >
@@ -202,7 +209,7 @@ export default function Step(props) {
                     onClick={() => props.setSelectedMaterial?.({ type: props.selectedMaterial?.type, index: idx })}
                     className={`px-4 py-2 rounded-lg border-2 transition-all duration-300 hover:scale-105
                       ${props.selectedMaterial?.index === idx 
-                        ? "bg-blue-500 border-blue-400 text-white shadow-blue-500/30" 
+                        ? "bg-emerald-500 border-emerald-400 text-white shadow-emerald-500/30" 
                         : "bg-gray-700/50 border-gray-600 text-gray-300 hover:border-gray-500"
                       }`}
                   >
@@ -223,7 +230,7 @@ export default function Step(props) {
 
     return (
       <section className="w-full">
-        <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 shadow-2xl">
+        <div className={baseCard}>
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-white mb-2">Профиль</h2>
             <p className="text-gray-400">Выберите профиль для вашего изделия</p>
@@ -236,7 +243,7 @@ export default function Step(props) {
                 onClick={() => props.setSelectedProfile?.(i)}
                 className={`group relative overflow-hidden rounded-xl border-2 p-4 transition-all duration-300 hover:scale-105 hover:shadow-2xl
                   ${props.selectedProfile === i 
-                    ? "bg-gradient-to-br from-blue-500/30 to-blue-600/30 border-blue-400 shadow-blue-500/20" 
+                    ? "bg-gradient-to-br from-emerald-500/30 to-emerald-600/30 border-emerald-400 shadow-emerald-500/20" 
                     : "bg-gradient-to-br from-gray-700/50 to-gray-800/50 border-gray-600/50 hover:border-gray-500"
                   }`}
               >
@@ -266,7 +273,7 @@ export default function Step(props) {
 
     return (
       <section className="w-full">
-        <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 shadow-2xl">
+        <div className={baseCard}>
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-white mb-2">Бортик</h2>
             <p className="text-gray-400">Выберите бортик для вашего изделия</p>
@@ -279,7 +286,7 @@ export default function Step(props) {
                 onClick={() => props.setSelectedBord?.(i)}
                 className={`group relative overflow-hidden rounded-xl border-2 p-4 transition-all duration-300 hover:scale-105 hover:shadow-2xl
                   ${props.selectedBord === i 
-                    ? "bg-gradient-to-br from-blue-500/30 to-blue-600/30 border-blue-400 shadow-blue-500/20" 
+                    ? "bg-gradient-to-br from-emerald-500/30 to-emerald-600/30 border-emerald-400 shadow-emerald-500/20" 
                     : "bg-gradient-to-br from-gray-700/50 to-gray-800/50 border-gray-600/50 hover:border-gray-500"
                   }`}
               >
@@ -348,7 +355,7 @@ export default function Step(props) {
 
     return (
       <section className="w-full">
-        <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 shadow-2xl">
+        <div className={baseCard}>
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-white mb-2">Размеры (мм)</h2>
             <p className="text-gray-400">Укажите точные размеры вашего изделия</p>
@@ -382,7 +389,7 @@ export default function Step(props) {
                           [field]: e.target.value === "" ? 0 : +e.target.value 
                         })
                       }
-                      className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
+                      className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-300"
                       placeholder={"Значение в мм"}
                       step="1"
                       min="0"
@@ -409,7 +416,7 @@ export default function Step(props) {
                         newRounding[i] = e.target.value === "" ? 0 : +e.target.value;
                         props.setRounding?.(newRounding);
                       }}
-                      className="w-full px-3 py-2 bg-gray-700/50 border border-gray-600 rounded-lg text-white text-center focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
+                      className="w-full px-3 py-2 bg-gray-700/50 border border-gray-600 rounded-lg text-white text-center focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-300"
                       placeholder="0"
                       step="1"
                       min="0"
@@ -434,7 +441,7 @@ export default function Step(props) {
                           newRounding[i] = e.target.value === "" ? 0 : +e.target.value;
                           props.setRounding?.(newRounding);
                         }}
-                        className="w-full px-3 py-2 bg-gray-700/50 border border-gray-600 rounded-lg text-white text-center focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
+                        className="w-full px-3 py-2 bg-gray-700/50 border border-gray-600 rounded-lg text-white text-center focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-300"
                         placeholder="0"
                         step="1"
                         min="0"
@@ -466,15 +473,15 @@ export default function Step(props) {
                      className="
                         w-5 h-5
                         form-checkbox
-                        text-blue-500
+                        text-emerald-500
                         bg-gray-700
                         border-gray-600
                         rounded
-                        focus:ring-blue-500 focus:ring-2
+                        focus:ring-emerald-500 focus:ring-2
                         cursor-pointer
                       "
                     />
-                  <span className="text-white group-hover:text-blue-300 transition-colors duration-300">Вырез под мойку</span>
+                  <span className="text-white group-hover:text-emerald-300 transition-colors duration-300">Вырез под мойку</span>
                 </label>
 
                 {props.cutoutWashing && (
@@ -491,15 +498,15 @@ export default function Step(props) {
                       className="
                         w-5 h-5
                         form-checkbox
-                        text-blue-500
+                        text-emerald-500
                         bg-gray-700
                         border-gray-600
                         rounded
-                        focus:ring-blue-500 focus:ring-2
+                        focus:ring-emerald-500 focus:ring-2
                         cursor-pointer
                       "
                     />
-                    <span className="text-white group-hover:text-blue-300 transition-colors duration-300">Мойка из камня</span>
+                    <span className="text-white group-hover:text-emerald-300 transition-colors duration-300">Мойка из камня</span>
                   </label>
                 )}
 
@@ -511,7 +518,7 @@ export default function Step(props) {
                         onClick={() => props.setSelectedWashings?.([i])}
                         className={`group relative overflow-hidden rounded-xl border-2 p-4 transition-all duration-300 hover:scale-105 hover:shadow-2xl
                           ${props.selectedWashings?.includes(i) 
-                            ? "bg-gradient-to-br from-blue-500/30 to-blue-600/30 border-blue-400 shadow-blue-500/20" 
+                            ? "bg-gradient-to-br from-emerald-500/30 to-emerald-600/30 border-emerald-400 shadow-emerald-500/20" 
                             : "bg-gradient-to-br from-gray-700/50 to-gray-800/50 border-gray-600/50 hover:border-gray-500"
                           }`}
                       >
@@ -568,7 +575,7 @@ export default function Step(props) {
     return (
       <div>
       <section className="w-full" ref={printRef}>
-        <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 shadow-2xl">
+        <div className={baseCard}>
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-white mb-2">Расчет стоимости изделия</h2>
             <p className="text-gray-400">Детальная смета вашего заказа</p>
@@ -615,7 +622,7 @@ export default function Step(props) {
                       </div>
                       <div className="flex justify-between">
                         <span className="text-gray-300">Вырез под мойку: </span>
-                        <span className={`font-medium ${props.cutoutWashing ? 'text-green-400' : 'text-red-400'}`}>
+                        <span className={`font-medium ${props.cutoutWashing ? 'text-emerald-400' : 'text-red-400'}`}>
                           {props.cutoutWashing ? "Да" : "Нет"}
                         </span>
                       </div>
@@ -633,7 +640,7 @@ export default function Step(props) {
 
             {/* Стоимость */}
             <div className="space-y-4">
-              <div className="bg-gradient-to-r from-blue-600/20 to-blue-700/20 rounded-xl p-4 border border-blue-500/30">
+              <div className="bg-gradient-to-r from-emerald-600/20 to-emerald-700/20 rounded-xl p-4 border border-emerald-500/30">
                 <h3 className="text-lg font-semibold text-white mb-3">Стоимость</h3>
                 <div className="space-y-3">
                   <div className="flex justify-between">
@@ -651,17 +658,17 @@ export default function Step(props) {
                   <div className="border-t border-gray-600 pt-3">
                     <div className="flex justify-between items-center">
                       <span className="text-xl font-bold text-white">Итоговая стоимость: </span>
-                      <span className="text-2xl font-bold text-green-400">{totalPrice.toLocaleString()} руб.</span>
+                      <span className="text-2xl font-bold text-emerald-400">{totalPrice.toLocaleString()} руб.</span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r from-green-600/20 to-green-700/20 rounded-xl p-4 border border-green-500/30">
+              <div className="bg-gradient-to-r from-emerald-600/20 to-emerald-700/20 rounded-xl p-4 border border-emerald-500/30">
                 <div className="text-center">
                   <h4 className="text-lg font-semibold text-white mb-2">Ваш заказ готов!</h4>
                   <p className="text-gray-300 text-sm mb-4">Свяжитесь с нами для оформления заказа</p>
-                  <button className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-green-500/30">
+                  <button className="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-emerald-500/30">
                     Оформить заказ
                   </button>
                 </div>
@@ -672,7 +679,7 @@ export default function Step(props) {
       </section>
       <button
         onClick={handlePrint}
-        className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg"
+        className="mt-4 px-4 py-2 bg-emerald-600 text-white rounded-lg"
       >
         Печать / PDF
       </button>

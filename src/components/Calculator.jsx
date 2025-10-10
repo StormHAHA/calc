@@ -147,12 +147,8 @@ export default function CalculatorApp() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-4">
+    <div className="min-h-screen p-4">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-white mb-2">Конфигуратор столешниц</h1>
-          <p className="text-gray-400">Создайте идеальную столешницу для вашего дома</p>
-        </div>
         
         <div className="space-y-6">
           <Breadcrumbs
@@ -210,7 +206,7 @@ export default function CalculatorApp() {
             {currentStep < steps.length - 1 && (
               <button
                 onClick={() => setCurrentStep(currentStep + 1)}
-                className="group bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/30 flex items-center gap-2"
+                className="group bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-emerald-500/30 flex items-center gap-2"
               >
                 <span>Далее</span>
                 <span>→</span>
