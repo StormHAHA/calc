@@ -5,14 +5,17 @@ import Step from "./Step";
 
 // Данные
 const materials = {
-  LG: [319, 375, 375, 474, 512],
-  Tristone: [319, 353, 353, 375, 474, 474, 512, 512],
-  Staron: [345, 385, 412, 412, 558, 558],
-  Corian: [344, 422, 537, 603],
-  Hanex: [319, 353, 375, 353, 450, 512, 512, 375, 512, 512],
-  Grandex: [319, 353, 375, 474, 512, 512],
-  Bienstone: [375, 430],
-  Neomarm: [430],
+  // LG: [319, 375, 375, 474, 512],
+  // Tristone: [319, 353, 353, 375, 474, 474, 512, 512],
+  // Staron: [345, 385, 412, 412, 558, 558],
+  // Corian: [344, 422, 537, 603],
+  // Hanex: [319, 353, 375, 353, 450, 512, 512, 375, 512, 512],
+  // Grandex: [319, 353, 375, 474, 512, 512],
+  // Bienstone: [375, 430],
+  // Neomarm: [430],
+  Однотонный: [265],
+  Крошка: [276],
+  Мрамор: [552],
 };
 
 const profiles = [0, 0, 0, 0, 1300, 1800];
@@ -32,10 +35,10 @@ const steps = [
   { id: 0, name: "Тип продукта", type: "type" },
   { id: 1, name: "Выбор формы", type: "shape" },
   { id: 2, name: "Материал", type: "material" },
-  { id: 3, name: "Профиль", type: "profile" },
-  { id: 4, name: "Бортик", type: "bord" },
-  { id: 5, name: "Размеры", type: "dimensions" },
-  { id: 6, name: "Итоговая цена", type: "summary" },
+  // { id: 3, name: "Профиль", type: "profile" },
+  // { id: 4, name: "Бортик", type: "bord" },
+  { id: 3, name: "Размеры", type: "dimensions" },
+  { id: 4, name: "Итоговая цена", type: "summary" },
 ];
 
 export default function CalculatorApp() {
@@ -44,7 +47,7 @@ export default function CalculatorApp() {
   // состояния
   const [productType, setProductType] = useState(null);
   const [shape, setShape] = useState("Прямая");
-  const [selectedMaterial, setSelectedMaterial] = useState({ type: "LG", index: 0 });
+  const [selectedMaterial, setSelectedMaterial] = useState({ type: "Однотонный", index: 0 });
   const [selectedProfile, setSelectedProfile] = useState(0);
   const [selectedBord, setSelectedBord] = useState(0);
   const [selectedWashings, setSelectedWashings] = useState([]);
@@ -53,7 +56,22 @@ export default function CalculatorApp() {
   const [sinkStone, setSinkStone] = useState(false);
   const [cutoutHob, setCutoutHob] = useState(false);
   const [cutoutWashing, setCutoutWashing] = useState(false);
+  async function getUSDRate() {
+  try {
+    const response = await fetch(
+      "http://www.cbr.ru/dataservice/data?y1=2025&y2=2025&publicationId=33&datasetId=127&measureId=" 
+    );
 
+    if (!response.ok) {
+      throw new Error(`Ошибка HTTP: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.RawData[-3].obs_val;
+  } catch (err) {
+    console.error("Ошибка при получении курса:", err);
+  }
+}
   const calculateTotal = () => {
     if (!productType) return 0;
 
@@ -61,7 +79,8 @@ export default function CalculatorApp() {
     const isBathroom = productType === "Столешницы для ванной";
     const isWindowsill = productType === "Подоконники";
 
-    const dollar = 83;
+    const dollar = getUSDRate();
+
     const radius = 1500;
     const cutout = 345;
 
@@ -92,7 +111,7 @@ export default function CalculatorApp() {
 
     let mat = S + (sink > 0 ? koef : 0);
 
-    let all_material = 0;
+    let all_material = mat;
     if (mat <= 0.54) all_material = 0.25;
     else if (mat <= 1.08) all_material = 0.5;
     else if (mat <= 1.63) all_material = 0.75;

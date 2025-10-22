@@ -139,23 +139,20 @@ export default function Step(props) {
   }
 
   if (step.type === "material") {
-    const materials = ["LG (Hi-Macs)", "Samsung (Staron)", "Corian (Dupont)", "Hanex", "Grandex", "Neomarm"];
+    const materials = ["Однотонный", "Крошка", "Мрамор",];
     const materialKeys = {
-      "LG (Hi-Macs)": "LG",
-      "Samsung (Staron)": "Staron",
-      "Corian (Dupont)": "Corian",
-      "Hanex": "Hanex",
-      "Grandex": "Grandex",
-      "Neomarm": "Neomarm"
+      "Однотонный": "Однотонный",
+      "Крошка": "Крошка",
+      "Мрамор": "Мрамор"
     };
-    const imgs = [
-      "/img/HiMacs.png",
-      "/img/Staron.png",
-      "/img/Dupont.png",
-      "/img/Hanex.png",
-      "/img/Grandex.png",
-      "/img/Neomarm.png",
-    ];
+    // const imgs = [
+    //   "/img/HiMacs.png",
+    //   "/img/Staron.png",
+    //   "/img/Dupont.png",
+    //   "/img/Hanex.png",
+    //   "/img/Grandex.png",
+    //   "/img/Neomarm.png",
+    // ];
 
     const selectedSeries = props.selectedMaterial ? props.materials?.[props.selectedMaterial.type] : [];
 
@@ -184,11 +181,11 @@ export default function Step(props) {
                   
                   <div className="relative z-10">
                     <div className="w-full h-24 mb-3 rounded-lg overflow-hidden bg-gray-600/30">
-                      <img
+                      {/* <img
                         src={imgs[i]}
                         alt={mat}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                      />
+                      /> */}
                     </div>
                     <h3 className="text-sm font-semibold text-white text-center">{mat}</h3>
                   </div>
@@ -197,7 +194,7 @@ export default function Step(props) {
             })}
           </div>
 
-          {props.selectedMaterial?.type && selectedSeries && selectedSeries.length > 0 && (
+          {/* {props.selectedMaterial?.type && selectedSeries && selectedSeries.length > 0 && (
             <div className="bg-gradient-to-r from-gray-700/30 to-gray-800/30 rounded-xl border border-gray-600/50 p-6">
               <h3 className="text-xl font-semibold text-white mb-4 text-center">
                 Серии {props.selectedMaterial.type}
@@ -218,7 +215,7 @@ export default function Step(props) {
                 ))}
               </div>
             </div>
-          )}
+          )} */}
         </div>
       </section>
     );
@@ -340,7 +337,69 @@ export default function Step(props) {
         shapeImage = "/img/004b.png";
       }
     }
+    const renderDimensionField = (field) => {
+  const positionsByShape = {
+    "Прямая": {
+      W1: { top: "23%", left: "34%" },
+      H1: { top: "14%", left: "85%" },
+    },
+    "Г-образная": {
+      W1: { top: "22%", left: "30%" },
+      H1: { top: "65%", left: "10%" },
+      W2: { top: "25%", left: "81%" },
+      H2: { top: "62%", left: "92%" },
+    },
+    "П-образная": {
+      W1: { top: "70%", left: "14%" },
+      H1: { top: "75%", left: "60%" },
+      W2: { top: "27%", left: "15%" },
+      H2: { top: "12%", left: "54%" },
+      W3: { top: "18%", left: "80%" },
+      H3: { top: "47%", left: "92%" },
+    },
+    "Прямой": {
+      W1: { top: "78%", left: "60%" },
+      H1: { top: "72%", left: "20%" },
+    },
+    "Угловой": {
+      W1: { top: "50%", left: "46%" },
+      H1: { top: "75%", left: "10%" },
+      W2: { top: "50%", left: "76%" },
+      H2: { top: "75%", left: "80%" },
+    },
+    "Эркерный": {
+      W1: { top: "56%", left: "30%" },
+      H1: { top: "90%", left: "20%" },
+      W2: { top: "50%", left: "50%" },
+      H2: { top: "65%", left: "52%" },
+      W3: { top: "45%", left: "70%" },
+      H3: { top: "60%", left: "90%" },
+    }
+  };
 
+  const coords = positionsByShape[props.shape]?.[field] || { top: "0%", left: "0%" };
+
+  return (
+    <input
+      key={field}
+      type="number"
+      value={props.dimensions?.[field] || ""}
+      onChange={(e) =>
+        props.setDimensions?.({
+          ...props.dimensions,
+          [field]: e.target.value === "" ? 0 : +e.target.value,
+        })
+      }
+      placeholder={field}
+      className="absolute w-20 px-2 py-1 bg-gray-800/70 border border-gray-500 rounded-md text-white text-center text-sm focus:ring-2 focus:ring-emerald-500"
+      style={{
+        top: coords.top,
+        left: coords.left,
+        transform: "translate(-50%, -50%)",
+      }}
+    />
+  );
+};
     const kitchenSinks = ["M410", "MR410", "D380", "M250"];
     const bathSinks = ["L600", "SH500", "R530"];
     const washingImages = {
@@ -361,46 +420,18 @@ export default function Step(props) {
             <p className="text-gray-400">Укажите точные размеры вашего изделия</p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-            {/* Изображение формы */}
-            <div className="flex justify-center">
-              <div className="w-full max-w-md">
-                <img 
-                  src={shapeImage} 
-                  alt={props.shape} 
-                  className="w-full h-auto rounded-xl border border-gray-600/50 shadow-lg"
-                />
-              </div>
-            </div>
-
-            {/* Поля ввода размеров */}
-            <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-white mb-4">Основные размеры</h3>
-              <div className="grid grid-cols-2 gap-4">
-                {dimensionFields.map((field) => (
-                  <div key={field} className="space-y-2">
-                    <label className="block text-gray-300 font-medium">{getPlaceholder(field)}</label>
-                    <input
-                      type="number"
-                      value={props.dimensions?.[field] || ""}
-                      onChange={(e) =>
-                        props.setDimensions?.({ 
-                          ...props.dimensions, 
-                          [field]: e.target.value === "" ? 0 : +e.target.value 
-                        })
-                      }
-                      className="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-300"
-                      placeholder={"Значение в мм"}
-                      step="1"
-                      min="0"
-                    />
-                  </div>
-                ))}
-              </div>
+          <div className="flex justify-center">
+            <div className="relative w-[600px] mb-10">
+              <img
+                src={shapeImage}
+                alt={props.shape}
+                className="w-full h-auto rounded-xl border border-gray-600/50 shadow-lg"
+              />
+              {dimensionFields.map((field) => renderDimensionField(field))}
             </div>
           </div>
 
-          {/* Радиусы бортиков */}
+          {/* Радиусы бортиков
           {(props.productType === "Столешницы для кухни" || props.productType === "Сто��ешницы для ванной") ? (
             <div className="bg-gradient-to-r from-gray-700/30 to-gray-800/30 rounded-xl border border-gray-600/50 p-6 mb-8">
               <h3 className="text-xl font-semibold text-white mb-4">Радиусы бортиков (мм)</h3>
@@ -451,7 +482,7 @@ export default function Step(props) {
                 </div>
               </div>
             )
-          )}
+          )} */}
 
           {/* Блок с мойкой */}
           {(props.productType === "Столешницы для кухни" || props.productType === "Столешницы для ванной") && (
@@ -596,17 +627,17 @@ export default function Step(props) {
                     <span className="text-white font-medium">{S.toFixed(2)} м²</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-300">Производитель: </span>
+                    <span className="text-gray-300">Тип материала: </span>
                     <span className="text-white font-medium">{props.selectedMaterial?.type}</span>
                   </div>
-                  <div className="flex justify-between">
+                  {/* <div className="flex justify-between">
                     <span className="text-gray-300">Толщина материала: </span>
                     <span className="text-white font-medium">{props.materials?.[props.selectedMaterial?.type]?.[props.selectedMaterial?.index]} мм</span>
-                  </div>
+                  </div> */}
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r from-gray-700/30 to-gray-800/30 rounded-xl p-4 border border-gray-600/50">
+              {/* <div className="bg-gradient-to-r from-gray-700/30 to-gray-800/30 rounded-xl p-4 border border-gray-600/50">
                 <h3 className="text-lg font-semibold text-white mb-3">Дополнительные опции</h3>
                 <div className="space-y-2">
                   <div className="flex justify-between">
@@ -635,7 +666,7 @@ export default function Step(props) {
                     </>
                   )}
                 </div>
-              </div>
+              </div> */}
             </div>
 
             {/* Стоимость */}
@@ -648,12 +679,12 @@ export default function Step(props) {
                     <span className="text-white font-medium">{(pricePerM2 * S).toLocaleString()} руб.</span>
                   </div>
                   
-                  {props.productType !== "Подоконники" && (
+                  {/* {props.productType !== "Подоконники" && (
                     <div className="flex justify-between">
                       <span className="text-gray-300">Стоимость бортика: </span>
                       <span className="text-white font-medium">{(S * (props.bord?.[props.selectedBord || 0] || 0)).toLocaleString()} руб.</span>
                     </div>
-                  )}
+                  )} */}
                   
                   <div className="border-t border-gray-600 pt-3">
                     <div className="flex justify-between items-center">
@@ -677,12 +708,12 @@ export default function Step(props) {
           </div>
         </div>
       </section>
-      <button
+      {/* <button
         onClick={handlePrint}
         className="mt-4 px-4 py-2 bg-emerald-600 text-white rounded-lg"
       >
         Печать / PDF
-      </button>
+      </button> */}
       </div>
     );
   }
