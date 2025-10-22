@@ -225,7 +225,7 @@ export default function CalculatorApp() {
             {currentStep < steps.length - 1 && (
               <button
                 onClick={() => setCurrentStep(currentStep + 1)}
-                className="group bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-emerald-500/30 flex items-center gap-2"
+                className="group bg-gradient-to-r from-black-500 to-black-600 hover:from-black-600 hover:to-black-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-black-500/30 flex items-center gap-2"
               >
                 <span>Далее</span>
                 <span>→</span>
