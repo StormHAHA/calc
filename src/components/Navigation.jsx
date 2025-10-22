@@ -1,6 +1,6 @@
 export default function Breadcrumbs({ steps, currentStep, setCurrentStep }) {
   return (
-    <div className="bg-gradient-to-br from-black/90 to-[#62C584]/40 backdrop-blur-sm border border-black/40 rounded-2xl p-6 shadow-2xl shadow-black/20">
+    <div className="border border-black/40 rounded-2xl p-6 shadow-2xl shadow-black/20">
       <nav className="flex flex-wrap justify-center gap-2 md:gap-4">
         {steps.map((step, idx) => {
           const isActive = idx === currentStep;
@@ -17,7 +17,7 @@ export default function Breadcrumbs({ steps, currentStep, setCurrentStep }) {
                 ${isActive 
                   ? "bg-gradient-to-br from-black/60 to-[#62C584]/60 border-[#62C584] text-white shadow-lg shadow-black/30" 
                   : isCompleted
-                    ? "bg-gradient-to-br from-[#62C584]/30 to-black/30 border-[#62C584]/60 text-[#CFFFD8] hover:from-[#62C584]/40 hover:to-black/40"
+                    ? "bg-gradient-to-br from-emerald/30 to-black/30 border-[#62C584]/60 text-[#CFFFD8] hover:from-[#62C584]/40 hover:to-black/40"
                     : isAccessible
                       ? "bg-gradient-to-br from-gray-700/50 to-gray-800/50 border-gray-600 text-gray-300 hover:border-[#62C584]/50 hover:text-white"
                       : "bg-gray-800/30 border-gray-700 text-gray-500 cursor-not-allowed"
@@ -62,7 +62,7 @@ export default function Breadcrumbs({ steps, currentStep, setCurrentStep }) {
         </div>
         <div className="w-full bg-gray-700/50 rounded-full h-2">
           <div 
-            className="bg-gradient-to-r from-black to-[#62C584] h-2 rounded-full transition-all duration-500 ease-out shadow-sm shadow-[#62C584]/40"
+            className="bg-gradient-to-r from-[#62ff84] to-[#62C584] h-2 rounded-full transition-all duration-500 ease-out shadow-sm shadow-[#62C584]/40"
             style={{ width: `${((currentStep + 1) / steps.length) * 100}%` }}
           />
         </div>

@@ -56,22 +56,22 @@ export default function CalculatorApp() {
   const [sinkStone, setSinkStone] = useState(false);
   const [cutoutHob, setCutoutHob] = useState(false);
   const [cutoutWashing, setCutoutWashing] = useState(false);
-  async function getUSDRate() {
-  try {
-    const response = await fetch(
-      "http://www.cbr.ru/dataservice/data?y1=2025&y2=2025&publicationId=33&datasetId=127&measureId=" 
-    );
+//   async function getUSDRate() {
+//   try {
+//     const url = "https://www.cbr.ru/dataservice/data?y1=2025&y2=2025&publicationId=33&datasetId=127&measureId=";
+//     const proxy = "https://api.allorigins.win/raw?url=" + encodeURIComponent(url);
+//     const response = await fetch(proxy);
 
-    if (!response.ok) {
-      throw new Error(`Ошибка HTTP: ${response.status}`);
-    }
+//     if (!response.ok) {
+//       throw new Error(`Ошибка HTTP: ${response.status}`);
+//     }
 
-    const data = await response.json();
-    return data.RawData[-3].obs_val;
-  } catch (err) {
-    console.error("Ошибка при получении курса:", err);
-  }
-}
+//     const data = await response.json();
+//     return Number(data.RawData[-3].obs_val);
+//   } catch (err) {
+//     console.error("Ошибка при получении курса:", err);
+//   }
+// }
   const calculateTotal = () => {
     if (!productType) return 0;
 
@@ -79,7 +79,7 @@ export default function CalculatorApp() {
     const isBathroom = productType === "Столешницы для ванной";
     const isWindowsill = productType === "Подоконники";
 
-    const dollar = getUSDRate();
+    const dollar = 82.8676;
 
     const radius = 1500;
     const cutout = 345;
@@ -209,7 +209,7 @@ export default function CalculatorApp() {
           
           <PriceDisplay total={calculateTotal()} />
           
-          <div className="flex justify-between items-center bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 shadow-2xl">
+          <div className="flex justify-between items-center rounded-2xl p-6 shadow-2xl">
             {currentStep > 0 ? (
               <button
                 onClick={() => setCurrentStep(currentStep - 1)}
@@ -225,7 +225,7 @@ export default function CalculatorApp() {
             {currentStep < steps.length - 1 && (
               <button
                 onClick={() => setCurrentStep(currentStep + 1)}
-                className="group bg-gradient-to-r from-black-500 to-black-600 hover:from-black-600 hover:to-black-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-black-500/30 flex items-center gap-2"
+                className="group bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-emerald-500/30 flex items-center gap-2"
               >
                 <span>Далее</span>
                 <span>→</span>

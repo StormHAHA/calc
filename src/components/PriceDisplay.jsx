@@ -8,19 +8,15 @@ export default function PriceDisplay({ total }) {
           </div>
           <div>
             <h3 className="text-xl font-bold text-white">Текущая стоимость</h3>
-            <p className="text-black-300 text-sm">Предварительный расчет</p>
+            <p className="text-white text-sm">Предварительный расчет</p>
           </div>
         </div>
         
         <div className="text-right">
-          <div className="text-3xl md:text-4xl font-bold text-black-400 mb-1">
+          <div className="text-3xl md:text-4xl font-bold text-[#65ff84] mb-1">
             {total.toLocaleString()} руб.
           </div>
-          {total > 0 && (
-            <div className="text-sm text-black-300">
-              Включая работы и материалы
-            </div>
-          )}
+          
         </div>
       </div>
     </div>

@@ -34,7 +34,7 @@ export default function Step(props) {
       return type === "W" ? `Ширина ${num - 1}` : `Глубина ${num - 1}`;
     }
   };
-  const baseCard = "bg-gradient-to-br from-black/80 to-[#62C584]/20 backdrop-blur-sm border border-black/40 rounded-2xl p-8 shadow-2xl shadow-black/20";
+  const baseCard = "border border-black/40 rounded-2xl p-8 shadow-2xl shadow-black/20";
 
   // Активная кнопка (зелёная)
   const activeBtn = "bg-gradient-to-br from-black/50 to-[#62C584]/50 border-[#62C584] shadow-lg shadow-black/40";
@@ -674,10 +674,7 @@ export default function Step(props) {
               <div className="bg-gradient-to-r from-black-600/20 to-black-700/20 rounded-xl p-4 border border-black-500/30">
                 <h3 className="text-lg font-semibold text-white mb-3">Стоимость</h3>
                 <div className="space-y-3">
-                  <div className="flex justify-between">
-                    <span className="text-gray-300">Стоимость материала: </span>
-                    <span className="text-white font-medium">{(pricePerM2 * S).toLocaleString()} руб.</span>
-                  </div>
+                  
                   
                   {/* {props.productType !== "Подоконники" && (
                     <div className="flex justify-between">
@@ -689,13 +686,13 @@ export default function Step(props) {
                   <div className="border-t border-gray-600 pt-3">
                     <div className="flex justify-between items-center">
                       <span className="text-xl font-bold text-white">Итоговая стоимость: </span>
-                      <span className="text-2xl font-bold text-black-400">{totalPrice.toLocaleString()} руб.</span>
+                      <span className="text-2xl font-bold text-[#62ff84]">{totalPrice.toLocaleString()} руб.</span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r from-black-600/20 to-black-700/20 rounded-xl p-4 border border-black-500/30">
+              {/* <div className="bg-gradient-to-r from-black-600/20 to-black-700/20 rounded-xl p-4 border border-black-500/30">
                 <div className="text-center">
                   <h4 className="text-lg font-semibold text-white mb-2">Ваш заказ готов!</h4>
                   <p className="text-gray-300 text-sm mb-4">Свяжитесь с нами для оформления заказа</p>
@@ -703,7 +700,7 @@ export default function Step(props) {
                     Оформить заказ
                   </button>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
