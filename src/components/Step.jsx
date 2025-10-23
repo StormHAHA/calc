@@ -343,6 +343,10 @@ export default function Step(props) {
       W1: { top: "23%", left: "34%" },
       H1: { top: "14%", left: "85%" },
     },
+    "Прямая для ванной": {
+      W1: { top: "20%", left: "34%" },
+      H1: { top: "65%", left: "10%" },
+    },
     "Г-образная": {
       W1: { top: "22%", left: "30%" },
       H1: { top: "65%", left: "10%" },
@@ -377,8 +381,10 @@ export default function Step(props) {
     }
   };
 
-  const coords = positionsByShape[props.shape]?.[field] || { top: "0%", left: "0%" };
-
+  let coords = positionsByShape[props.shape]?.[field] || { top: "0%", left: "0%" };
+  if (props.productType === "Столешницы для ванной") {
+    coords = positionsByShape["Прямая для ванной"]?.[field];
+  }
   return (
     <input
       key={field}

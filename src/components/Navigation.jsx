@@ -15,7 +15,7 @@ export default function Breadcrumbs({ steps, currentStep, setCurrentStep }) {
               className={`
                 group relative flex items-center justify-center px-3 py-2 md:px-4 md:py-3 rounded-lg border-2 transition-all duration-300 transform hover:scale-105
                 ${isActive 
-                  ? "bg-gradient-to-br from-black/60 to-[#62C584]/60 border-[#62C584] text-white shadow-lg shadow-black/30" 
+                  ? "bg-gradient-to-br from-#[62C584]/60 to-[#62C584]/60 border-[#62C584] text-white shadow-lg shadow-black/30" 
                   : isCompleted
                     ? "bg-gradient-to-br from-emerald/30 to-black/30 border-[#62C584]/60 text-[#CFFFD8] hover:from-[#62C584]/40 hover:to-black/40"
                     : isAccessible
@@ -30,7 +30,7 @@ export default function Breadcrumbs({ steps, currentStep, setCurrentStep }) {
                 ${isActive 
                   ? "bg-[#62C584] text-[#1A2B17]" 
                   : isCompleted
-                    ? "bg-black text-white"
+                    ? "bg-[#62C584] text-white"
                     : "bg-gray-600 text-gray-300"
                 }
               `}>
