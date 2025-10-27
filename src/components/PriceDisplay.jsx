@@ -1,9 +1,9 @@
 export default function PriceDisplay({ total }) {
   return (
-    <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 shadow-2xl">
+    <div className="backdrop-blur-sm rounded-2xl p-6 shadow-2xl">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <div className="w-14 h-14 bg-gradient-to-br from-black-500 to-black-600 rounded-xl flex items-center justify-center shadow-lg shadow-black-500/30">
+          <div className="w-14 h-14 bg-[#62C584] rounded-xl flex items-center justify-center shadow-lg shadow-black-500/30">
             <span className="text-white text-2xl font-bold">₽</span>
           </div>
           <div>

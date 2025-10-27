@@ -44,7 +44,7 @@ export default function Step(props) {
   if (step.type === "type") {
     const types = ["Столешницы для кухни", "Столешницы для ванной", "Подоконники"];
     const descr = ["Кухонные и рабочие столешницы", "Интегрированные мойки", "Подоконники из искусственного камня"];
-    const images = ["🫖", "🛀🏿", "🪟"];
+    const images = ["https://akrilnsk.nilit1.ru/img/кухня.jpg", "https://akrilnsk.nilit1.ru/img/ванная.jpg", "https://akrilnsk.nilit1.ru/img/подоконник.jpg"];
 
     return (
       <section className="w-full">
@@ -68,8 +68,12 @@ export default function Step(props) {
                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 
                 <div className="relative z-10">
-                  <div className="text-7xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                    {images[i]}
+                  <div className="w-full h-34 mb-3 rounded-lg overflow-hidden bg-gray-600/30">
+                    <img
+                      src={images[i]}
+                      alt={descr[i]}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
                   </div>
                   <h3 className="text-xl font-semibold text-white mb-3">{type}</h3>
                   <p className="text-gray-400 text-sm leading-relaxed">{descr[i]}</p>
@@ -87,15 +91,15 @@ export default function Step(props) {
     
     if (props.productType === "Столешницы для кухни") {
       shapes = ["Прямая", "Г-образная", "П-образная"];
-      imgs = ["/img/001.jpg", "/img/002.jpg", "/img/003.jpg"];
+      imgs = ["https://akrilnsk.nilit1.ru/img/001.jpg", "https://akrilnsk.nilit1.ru/img/002.jpg", "https://akrilnsk.nilit1.ru/img/003.jpg"];
       h = "Выберите форму столешницы для кухни";
     } else if (props.productType === "Столешницы для ванной") {
       shapes = ["Прямая"];
-      imgs = ["/img/014.jpg"];
+      imgs = ["https://akrilnsk.nilit1.ru/img/014.jpg"];
       h = "Выберите форму столешницы для ванной";
     } else {
       shapes = ["Прямой", "Угловой", "Эркерный"];
-      imgs = ["/img/005.jpg", "/img/006.jpg", "/img/004.jpg"];
+      imgs = ["https://akrilnsk.nilit1.ru/img/005.jpg", "https://akrilnsk.nilit1.ru/img/006.jpg", "https://akrilnsk.nilit1.ru/img/004.jpg"];
       h = "Выберите форму подоконника";
     }
 
@@ -223,7 +227,7 @@ export default function Step(props) {
 
   if (step.type === "profile") {
     const profileNames = ["R3", "R5", "R10", "L45", "Классика", "Непроливайка"];
-    const imgs = ["/img/k1.jpg", "/img/k2.jpg", "/img/k3.jpg", "/img/k4.jpg", "/img/k5.jpg", "/img/k6.jpg"];
+    const imgs = ["https://akrilnsk.nilit1.ru/img/k1.jpg", "https://akrilnsk.nilit1.ru/img/k2.jpg", "https://akrilnsk.nilit1.ru/img/k3.jpg", "https://akrilnsk.nilit1.ru/img/k4.jpg", "https://akrilnsk.nilit1.ru/img/k5.jpg", "https://akrilnsk.nilit1.ru/img/k6.jpg"];
 
     return (
       <section className="w-full">
@@ -266,7 +270,7 @@ export default function Step(props) {
 
   if (step.type === "bord") {
     const bordNames = ["Галтель", "R3-R5", "Классика", "L45", "Литой"];
-    const imgs = ["/img/b1.jpg", "/img/b2.jpg", "/img/b3.jpg", "/img/b4.jpg", "/img/b5.jpg"];
+    const imgs = ["https://akrilnsk.nilit1.ru/img/b1.jpg", "https://akrilnsk.nilit1.ru/img/b2.jpg", "https://akrilnsk.nilit1.ru/img/b3.jpg", "https://akrilnsk.nilit1.ru/img/b4.jpg", "https://akrilnsk.nilit1.ru/img/b5.jpg"];
 
     return (
       <section className="w-full">
@@ -314,27 +318,27 @@ export default function Step(props) {
     if (props.productType === "Столешницы для кухни") {
       if (props.shape === "Прямая") {
         dimensionFields = ["W1", "H1"];
-        shapeImage = "/img/001b.png";
+        shapeImage = "https://akrilnsk.nilit1.ru/img/001b.png";
       } else if (props.shape === "Г-образная") {
         dimensionFields = ["W1", "H1", "W2", "H2"];
-        shapeImage = "/img/002b.png";
+        shapeImage = "https://akrilnsk.nilit1.ru/img/002b.png";
       } else if (props.shape === "П-образная") {
         dimensionFields = ["W1", "H1", "W2", "H2", "W3", "H3"];
-        shapeImage = "/img/003b.png";
+        shapeImage = "https://akrilnsk.nilit1.ru/img/003b.png";
       }
     } else if (props.productType === "Столешницы для ванной") {
       dimensionFields = ["W1", "H1"];
-      shapeImage = "/img/014b.png";
+      shapeImage = "https://akrilnsk.nilit1.ru/img/014b.png";
     } else if (props.productType === "Подоконники") {
       if (props.shape === "Прямой") {
         dimensionFields = ["W1", "H1"];
-        shapeImage = "/img/005b.png";
+        shapeImage = "https://akrilnsk.nilit1.ru/img/005b.png";
       } else if (props.shape === "Угловой") {
         dimensionFields = ["W1", "H1", "W2", "H2"];
-        shapeImage = "/img/006b.png";
+        shapeImage = "https://akrilnsk.nilit1.ru/img/006b.png";
       } else if (props.shape === "Эркерный") {
         dimensionFields = ["W1", "H1", "W2", "H2", "W3", "H3"];
-        shapeImage = "/img/004b.png";
+        shapeImage = "https://akrilnsk.nilit1.ru/img/004b.png";
       }
     }
     const renderDimensionField = (field) => {
@@ -409,13 +413,13 @@ export default function Step(props) {
     const kitchenSinks = ["M410", "MR410", "D380", "M250"];
     const bathSinks = ["L600", "SH500", "R530"];
     const washingImages = {
-      M410: "/img/washing0.jpg",
-      MR410: "/img/washing1.jpg",
-      D380: "/img/washing2.jpg",
-      M250: "/img/washing5.jpg",
-      L600: "/img/washing3.jpg",
-      SH500: "/img/washing4.jpg",
-      R530: "/img/washing6.jpg",
+      M410: "https://akrilnsk.nilit1.ru/img/washing0.jpg",
+      MR410: "https://akrilnsk.nilit1.ru/img/washing1.jpg",
+      D380: "https://akrilnsk.nilit1.ru/img/washing2.jpg",
+      M250: "https://akrilnsk.nilit1.ru/img/washing5.jpg",
+      L600: "https://akrilnsk.nilit1.ru/img/washing3.jpg",
+      SH500: "https://akrilnsk.nilit1.ru/img/washing4.jpg",
+      R530: "https://akrilnsk.nilit1.ru/img/washing6.jpg",
     };
 
     return (
